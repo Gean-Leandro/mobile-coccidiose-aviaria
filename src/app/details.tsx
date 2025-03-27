@@ -1,6 +1,6 @@
 import "../../global.css";
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, ActivityIndicator, } from 'react-native';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { useFonts, Roboto_400Regular, Roboto_500Medium } from "@expo-google-fonts/roboto";
 import descricao_icon from '../assets/icons/descricao_icon.png';
 import alvo_icon from '../assets/icons/alvo_icon.png';
@@ -10,6 +10,7 @@ import lupa_icon from '../assets/icons/lupa_icon.png';
 import close_icon from '../assets/icons/closeblack_icon.png';
 import glossario_icon from '../assets/icons/Glossário.png';
 import referencias_icon from '../assets/icons/Referencia.png';
+import arrowback_icon from '../assets/icons/arrowback_icon.png';
 import score1 from '../assets/img/acervulina/Score 1.png';
 import score2 from '../assets/img/acervulina/Score 2.png';
 import score3 from '../assets/img/acervulina/Score 3.png';
@@ -37,6 +38,11 @@ export default function App() {
     <GestureHandlerRootView>
     <ScrollView className="bg-white">
       <View className='w-[100%] flex-row justify-center items-center mt-5 mb-[38px]'>
+        <View className="absolute left-5">
+          <TouchableOpacity onPress={() => router.back()}>
+            <Image source={arrowback_icon} style={{width:25, height:25}}/>
+          </TouchableOpacity>
+        </View>
         <View className='bg-mygray-500 w-[33px] h-[4px]'/>
         <Text className={'text-[20px] w-[50%] text-center italic font-medium font-RobotoMedium'}>Eimeria acervulina</Text>
         <View className='bg-mygray-500 w-[33px] h-[4px]'/>
@@ -104,7 +110,9 @@ export default function App() {
                 <Image source={score1} style={{width:255, height:123}}/>
                 </View>
               <View className="w-[10%] justify-center items-center">
-                <Image source={lupa_icon} style={{width:25, height:25}}/>
+                <TouchableOpacity onPress={() => router.push({pathname:'/score'})}>
+                  <Image source={lupa_icon} style={{width:25, height:25}}/>
+                </TouchableOpacity>
               </View>
             </View>
               
@@ -116,7 +124,9 @@ export default function App() {
                 <Image source={score2} style={{width:255, height:123}}/>
               </View>
               <View className="w-[10%] justify-center items-center">
-                <Image source={lupa_icon} style={{width:25, height:25}}/>
+                <TouchableOpacity onPress={() => router.push({pathname:'/score'})}>
+                  <Image source={lupa_icon} style={{width:25, height:25}}/>
+                </TouchableOpacity>
               </View>
             </View>
               
@@ -128,7 +138,9 @@ export default function App() {
                 <Image source={score3} style={{width:255, height:123}}/>
               </View>
               <View className="w-[10%] justify-center items-center">
-                <Image source={lupa_icon} style={{width:25, height:25}}/>
+                <TouchableOpacity onPress={() => router.push({pathname:'/score'})}>
+                  <Image source={lupa_icon} style={{width:25, height:25}}/>
+                </TouchableOpacity>
               </View>
             </View>
               
@@ -140,7 +152,9 @@ export default function App() {
                 <Image source={score4} style={{width:255, height:123}}/>
               </View>
               <View className="w-[10%] justify-center items-center">
-                <Image source={lupa_icon} style={{width:25, height:25}}/>
+                <TouchableOpacity onPress={() => router.push({pathname:'/score'})}>
+                  <Image source={lupa_icon} style={{width:25, height:25}}/>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
