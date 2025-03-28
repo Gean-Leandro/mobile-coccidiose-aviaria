@@ -1,10 +1,10 @@
 import "../../global.css";
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, ActivityIndicator, } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, ActivityIndicator, Modal, Dimensions } from 'react-native';
 import { Link, router } from 'expo-router';
 import { useFonts, Roboto_400Regular, Roboto_500Medium } from "@expo-google-fonts/roboto";
 import details_icon from '../assets/icons/details_icon.png';
 import lupa_icon from '../assets/icons/lupawhite_icon.png';
-import close_icon from '../assets/icons/closeblack_icon.png';
+import close_icon from '../assets/icons/closewhite_icon.png';
 import glossario_icon from '../assets/icons/Glossário.png';
 import referencias_icon from '../assets/icons/Referencia.png';
 import score1 from '../assets/img/acervulina/Score 1.png';
@@ -18,6 +18,8 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function App() {
   const modalRef = useRef<Modalize>(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const { width, height } = Dimensions.get("window"); // Obtém o tamanho da tela
 
   const [fontsLoaded] = useFonts({
     Roboto: Roboto_400Regular,
@@ -48,7 +50,7 @@ export default function App() {
       <View className="justify-center items-center mb-[35px]">
         <Image source={score1} style={{width:347, height:167, borderRadius: 10}}/>
         <View className="absolute top-[80%] left-[85%]">
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setModalVisible(true)}>
             <Image source={lupa_icon} style={{width:25, height:25}}/>
           </TouchableOpacity>
         </View>
@@ -137,6 +139,28 @@ export default function App() {
         </View>
       </ScrollView>
     </Modalize>
+
+    <Modal visible={modalVisible} transparent={true} animationType="fade">
+        <View className="flex-1 justify-center items-center bg-black/80">
+          <Image 
+          source={score1}
+          resizeMode="contain" 
+          style={{ 
+            position: 'absolute',
+            transform: [{ rotate: "90deg" }],
+            width: height, 
+            height: width,
+            }} />
+          
+          {/* Botão de Fechar */}
+          <TouchableOpacity
+            onPress={() => setModalVisible(false)}
+            className="absolute top-10 right-5 p-3 rounded-full"
+          >
+            <Image source={close_icon} style={{height:25, width:25}}/>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </GestureHandlerRootView>
     </>
   );
