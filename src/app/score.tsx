@@ -4,7 +4,8 @@ import { Link, router } from 'expo-router';
 import { useFonts, Roboto_400Regular, Roboto_500Medium } from "@expo-google-fonts/roboto";
 import details_icon from '../assets/icons/details_icon.png';
 import lupa_icon from '../assets/icons/lupawhite_icon.png';
-import close_icon from '../assets/icons/closewhite_icon.png';
+import closewhite_icon from '../assets/icons/closewhite_icon.png';
+import closeblack_icon from '../assets/icons/closeblack_icon.png';
 import glossario_icon from '../assets/icons/Glossário.png';
 import referencias_icon from '../assets/icons/Referencia.png';
 import score1 from '../assets/img/acervulina/Score 1.png';
@@ -41,7 +42,7 @@ export default function App() {
           </TouchableOpacity>
         </View>
         <View className='bg-mygray-500 w-[33px] h-[4px]'/>
-          <Text className={'text-[20px] w-[50%] text-center italic font-medium font-RobotoMedium'}>Eimeria acervulina</Text>
+          <Text className={'text-[20px] w-[50%] text-center font-medium font-RobotoMedium'}>SCORE 1</Text>
         <View className='bg-mygray-500 w-[33px] h-[4px]'/>
       </View>
 
@@ -77,7 +78,9 @@ export default function App() {
       </TouchableOpacity>
     </View>
     <View className="absolute top-[92%] left-[5%]">
-      <Image source={referencias_icon} style={{width:50, height:50}}/>
+      <TouchableOpacity onPress={() => router.push({pathname:'/references'})}>
+        <Image source={referencias_icon} style={{width:50, height:50}}/>
+      </TouchableOpacity>
     </View>
     <Modalize ref={modalRef} 
       adjustToContentHeight        
@@ -88,7 +91,7 @@ export default function App() {
       </View>
       <View className="absolute top-5 left-[90%]">
         <TouchableOpacity onPress={() => modalRef.current?.close()}>
-          <Image source={close_icon} style={{width:25, height:25}}/>
+          <Image source={closeblack_icon} style={{width:25, height:25}}/>
         </TouchableOpacity>
       </View>
       <ScrollView className="bg-mygray-400 rounded-t-10">
@@ -157,7 +160,7 @@ export default function App() {
             onPress={() => setModalVisible(false)}
             className="absolute top-10 right-5 p-3 rounded-full"
           >
-            <Image source={close_icon} style={{height:25, width:25}}/>
+            <Image source={closewhite_icon} style={{height:25, width:25}}/>
           </TouchableOpacity>
         </View>
       </Modal>

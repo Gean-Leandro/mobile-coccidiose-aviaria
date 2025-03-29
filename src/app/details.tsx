@@ -167,7 +167,9 @@ export default function App() {
       </TouchableOpacity>
     </View>
     <View className="absolute top-[92%] left-[5%]">
-      <Image source={referencias_icon} style={{width:50, height:50}}/>
+      <TouchableOpacity onPress={() => router.push({pathname:'/references'})}>
+        <Image source={referencias_icon} style={{width:50, height:50}}/>
+      </TouchableOpacity>
     </View>
     <Modalize ref={modalRef} 
       adjustToContentHeight        
